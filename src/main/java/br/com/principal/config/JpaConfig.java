@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "br.com.xlo.repository")
+@EnableJpaRepositories(basePackages = "br.com.principal.repository")
 public class JpaConfig {
 
     @Autowired
