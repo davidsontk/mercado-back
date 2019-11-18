@@ -5,6 +5,7 @@
  */
 package br.com.principal.controller;
 
+import br.com.principal.dto.ProdutoDTO;
 import br.com.principal.model.Produto;
 import br.com.principal.repository.ProdutoRepository;
 import java.util.List;
@@ -26,7 +27,7 @@ public class VendaController {
     private ProdutoRepository produtoRepository;
     
     @GetMapping("/listarProdutos")
-    public List<Produto> listarTodosProdutos(){
+    public List<ProdutoDTO> listarTodosProdutos(){
         return produtoRepository.buscarTodosOsProdutos();
     }
     

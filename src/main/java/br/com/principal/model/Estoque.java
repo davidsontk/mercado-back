@@ -23,23 +23,46 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "estoque")
-public class Estoque  implements Serializable {
+public class Estoque implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "codigo")
-    private Integer codigo; 
-    
-    @Size(max=100)
-    @JoinColumn(referencedColumnName = "codigo" , name ="cod_produto")
+    private Integer codigo;
+
+    @JoinColumn(referencedColumnName = "codigo", name = "cod_produto")
     @OneToOne
     private Produto codProduto;
-    
-    @Size(max = 100)
+
     @Column(name = "estoque")
     private Integer estoque;
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public Produto getCodProduto() {
+        return codProduto;
+    }
+
+    public void setCodProduto(Produto codProduto) {
+        this.codProduto = codProduto;
+    }
+
+    public Integer getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Integer estoque) {
+        this.estoque = estoque;
+    }
+
 }
 
 /*

@@ -23,7 +23,7 @@ import javax.validation.constraints.Size;
  * @author Bruna Costa
  */
 @Entity
-@Table(name="venda")
+@Table(name = "venda")
 public class Venda implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,24 +31,64 @@ public class Venda implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "codigo")
-    private Integer codigo; 
-    
-    @Size(max=100)
-    @JoinColumn(referencedColumnName = "codigo" , name ="cod_cliente")
+    private Integer codigo;
+
+    @Size(max = 100)
+    @JoinColumn(referencedColumnName = "codigo", name = "cod_cliente")
     @OneToOne
     private Cliente codCliente;
-    
-    @Size(max=1)
-    @Column(name="pagamento")
+
+    @Size(max = 1)
+    @Column(name = "pagamento")
     private char pagamento;
-    
-    @Size(max=100)
-    @Column(name="valor_total")
+
+    @Size(max = 100)
+    @Column(name = "valor_total")
     private Double valorTotal;
-    
-    @Size(max=10)
-    @Column(name="data_negociacao")
+
+    @Size(max = 10)
+    @Column(name = "data_negociacao")
     private Date dataNegociacao;
+    
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public Cliente getCodCliente() {
+        return codCliente;
+    }
+
+    public void setCodCliente(Cliente codCliente) {
+        this.codCliente = codCliente;
+    }
+
+    public char getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(char pagamento) {
+        this.pagamento = pagamento;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public Date getDataNegociacao() {
+        return dataNegociacao;
+    }
+
+    public void setDataNegociacao(Date dataNegociacao) {
+        this.dataNegociacao = dataNegociacao;
+    }
 }
 
 /*CREATE TABLE PUBLIC.VENDA(
