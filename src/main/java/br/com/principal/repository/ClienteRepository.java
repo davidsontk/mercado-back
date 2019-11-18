@@ -11,11 +11,13 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
-    
+
     @Override
     Cliente save(Cliente c);
-    
+
     Cliente findByNome(String nome);
+
+    Cliente findByCpf(String cpf);
 
     List<Cliente> findAllByOrderByNomeAsc();
 }

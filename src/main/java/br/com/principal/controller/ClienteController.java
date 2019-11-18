@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.principal.repository.ClienteRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 /**
  *
@@ -35,11 +37,17 @@ public class ClienteController {
     }
 
     @PostMapping("/login")
-    public Boolean signUp(@RequestBody Cliente user) {
-        user.setSenha(bCryptPasswordEncoder.encode(user.getSenha()));
-        Cliente c = clienteRepository.findByNome(user.getNome());
+    public ResponseEntity<Object> signUp(@RequestBody Cliente user) {
 
-        return checkPassword(user.getSenha(), c.getSenha());
+        Cliente c = clienteRepository.findByCpf(user.getCpf());
+        if (c == null) {
+            return new ResponseEntity<>("Cliente não encontrado", HttpStatus.BAD_REQUEST);
+        }
+        if (checkPassword(user.getSenha(), c.getSenha())) {
+            return new ResponseEntity<>(c, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping
