@@ -13,8 +13,10 @@ import org.springframework.stereotype.Repository;
  *
  * @author Bruna Costa
  */
-
 @Repository
 public interface VendaRepository extends JpaRepository<Venda, Long> {
+
+    @Override
+    Venda save(Venda v);
     
 }

@@ -18,11 +18,12 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
-    
-    
+
     @Query("SELECT new br.com.principal.dto.ProdutoDTO(p,e) FROM Produto p "
             + "JOIN Estoque e ON p.codigo = e.codProduto "
             + "WHERE e.estoque > 0 "
             + " ORDER BY p.descricao")
     List<ProdutoDTO> buscarTodosOsProdutos();
+
+    Produto findByCodigo(Integer codigo);
 }

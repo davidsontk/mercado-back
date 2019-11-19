@@ -13,8 +13,9 @@ import org.springframework.stereotype.Repository;
  *
  * @author Bruna Costa
  */
-
 @Repository
-public interface VendaItemRepository extends JpaRepository<VendaItem, Long>  {
-    
+public interface VendaItemRepository extends JpaRepository<VendaItem, Long> {
+
+    @Override
+    VendaItem save(VendaItem vendaItem);
 }

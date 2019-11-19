@@ -35,22 +35,18 @@ public class VendaItem implements Serializable {
     @Column(name = "codigo")
     private Integer codigo;
 
-    @Size(max = 100)
     @Column(name = "quantidade")
     private Integer quantidade;
 
-    @Size(max = 100)
     @JoinColumn(referencedColumnName = "codigo", name = "cod_venda")
     @ManyToOne
     private Venda codVenda;
 
-    @Size(max = 20)
     @Column(name = "valor_total")
     private Double valorTotal;
 
-    @Size(max = 100)
     @JoinColumn(referencedColumnName = "codigo", name = "cod_produto")
-    @OneToOne
+    @ManyToOne
     private Produto codProduto;
 
     public Integer getCodigo() {

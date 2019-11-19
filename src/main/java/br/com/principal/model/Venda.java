@@ -14,9 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 /**
  *
@@ -33,23 +32,19 @@ public class Venda implements Serializable {
     @Column(name = "codigo")
     private Integer codigo;
 
-    @Size(max = 100)
     @JoinColumn(referencedColumnName = "codigo", name = "cod_cliente")
-    @OneToOne
+    @ManyToOne
     private Cliente codCliente;
 
-    @Size(max = 1)
     @Column(name = "pagamento")
     private char pagamento;
 
-    @Size(max = 100)
     @Column(name = "valor_total")
     private Double valorTotal;
 
-    @Size(max = 10)
     @Column(name = "data_negociacao")
     private Date dataNegociacao;
-    
+
     public Integer getCodigo() {
         return codigo;
     }
@@ -101,4 +96,4 @@ public class Venda implements Serializable {
 	CONSTRAINT "VENDA_PK" PRIMARY KEY (CODIGO),
 	CONSTRAINT "CLIENTE_FK" FOREIGN KEY (COD_CLIENTE) REFERENCES PUBLIC.CLIENTE(CODIGO)
 );
-*/
+ */
